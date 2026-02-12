@@ -1,0 +1,1 @@
+fetch("produtos.json").then(r => r.json()).then(data => { const app = document.getElementById("app"); data.forEach(p => { app.innerHTML += `<div class="product-card"><img src="${p.imagem}"><h2>${p.nome}</h2><p>${p.descricao}</p><p class="price">R$ ${p.preco}</p></div>`; }); });
