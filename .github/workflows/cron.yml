@@ -1,1 +1,20 @@
-name: AutoUpdate`non:`n  schedule:`n    - cron: "0 */4 * * *"`n  workflow_dispatch:`njobs:`n  build:`n    runs-on: ubuntu-latest`n    steps:`n      - uses: actions/checkout@v4`n      - name: Update`n        run: |`n          git config user.name "GitHub Action"`n          git config user.email "action@github.com"`n          echo "$(date)" > last_run.txt`n          git add .`n          git commit -m "Cloud Update"`n          git push
+name: AutoUpdate
+on:
+  schedule:
+    - cron: '0 */4 * * *'
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update
+        run: |
+          git config user.name 'GitHub Action'
+          git config user.email 'action@github.com'
+          echo 02/12/2026 15:04:18 > last_run.txt
+          git add .
+          git commit -m 'Cloud Update'
+          git push
